@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-v^#^da@csgj(8t^jt&v6uxkl_bkj-bc4o4hg296r3mtq238qib'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost','proyeccionnepatla.herokuapp.com']
 
@@ -103,7 +103,6 @@ TEMPLATES = [
         },
     },
 ]
-
 WSGI_APPLICATION = 'backend.wsgi.application'
 
 
@@ -170,4 +169,4 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 
 if os.getcwd() == '/app':
-    DEBUG = True
+    DEBUG = False
