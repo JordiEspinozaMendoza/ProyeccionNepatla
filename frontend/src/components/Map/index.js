@@ -42,7 +42,7 @@ export default function MapComponent() {
 
   useEffect(() => {
     dispatch(listSpecies());
-  },[species]);
+  },[]);
   if (loadError) return "Error al cargar el mapa";
   if (!isLoaded) return "Cargando mapa";
   return (
