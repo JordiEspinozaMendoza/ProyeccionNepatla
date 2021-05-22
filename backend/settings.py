@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-v^#^da@csgj(8t^jt&v6uxkl_bkj-bc4o4hg296r3mtq238qib'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost','proyeccionnepatla.herokuapp.com']
 
@@ -170,4 +170,4 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 
 if os.getcwd() == '/app':
-    DEBUG = False
+    DEBUG = True
