@@ -16,5 +16,15 @@
   .map-info {
     min-height: 100px;
   }
-
+  .img-home{
+    height: 350px;
+    margin: 0 auto;
+    margin-bottom: 40px !important;
+    width: 60%;
+  }
+  .img-home-2{
+    height: 450px;
+    margin: 0 auto;
+    width: 100%;
+  }
 }

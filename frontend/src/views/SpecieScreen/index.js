@@ -61,7 +61,7 @@ export default function SpecieScreen({ history, match }) {
         <p>{specie?.info_actual}</p>
         <hr />
         <h5>Concientización</h5>
-        <p>${specie?.awareness}</p>
+        <p>{specie?.awareness}</p>
       </Container>
       {specie?.ong && specie?.ong != "NA" && (
         <Container
@@ -76,7 +76,7 @@ export default function SpecieScreen({ history, match }) {
             className="mb-3"
             onClick={() => setShowDonation(!showDonation)}
           >
-            Quiero hacer una donacion con ${specie.ong}
+            Quiero hacer una donacion con {specie.ong}
           </Button>
           {showDonation ? (
             <>
