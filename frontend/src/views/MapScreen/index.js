@@ -77,7 +77,7 @@ export default function MapScreen({ history }) {
               lng: parseFloat(specie.altitude),
             }}
             icon={{
-              url: `https://res.cloudinary.com/jordiespinoza/${specie.img}`,
+              url: `https://res.cloudinary.com/jordiespinoza/${specie.logo}`,
               scaledSize: new window.google.maps.Size(60, 60),
               origin: new window.google.maps.Point(0, 0),
               anchor: new window.google.maps.Point(15, 15),

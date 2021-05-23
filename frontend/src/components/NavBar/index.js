@@ -11,6 +11,7 @@ export default function NavigationBar() {
   return (
     <>
       <Navbar
+        style={{backgroundColor:"#000 !important"}}
         fixed="top"
         expand="lg"
         collapseOnSelect

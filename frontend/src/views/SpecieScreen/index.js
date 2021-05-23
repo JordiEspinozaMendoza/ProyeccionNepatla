@@ -25,7 +25,7 @@ export default function SpecieScreen({ history, match }) {
             </Button>
         </Link>
       <Row className="w-100" style={{marginTop: "3vh"}}>
-        <Col md={4}>
+        <Col lg={4}>
             <ImageZoom 
                 image={{
                     src: `https://res.cloudinary.com/jordiespinoza/${specie?.img}`,
@@ -38,7 +38,7 @@ export default function SpecieScreen({ history, match }) {
                 }}
             />
         </Col>
-        <Col md={6}>
+        <Col lg={6}>
           <h1>{specie?.name}</h1>
           <hr/>
           <span>Riesgo: {specie?.risk}</span>
