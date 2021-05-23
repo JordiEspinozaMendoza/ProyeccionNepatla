@@ -19,4 +19,6 @@ Nuestro escalamiento esperado es el posicionarnos en México como un mediador vi
 
 Applicacion desarrollada con ReactJs para el frontend, Python y Django(creación de una API) para el backend y consumimos la API de google maps para el uso del mapa 
 
+Visita <a href="https://www.proyeccionnepatla.com/#/">proyeccionnepatla.com</a>
+
 <img src="https://res.cloudinary.com/jordiespinoza/image/upload/v1621791252/unknown_atfvjk.png" width = "500">
