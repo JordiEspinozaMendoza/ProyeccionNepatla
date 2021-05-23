@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Button } from "react-bootstrap";
+import { Button, Image } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import {
   GoogleMap,
@@ -11,6 +11,8 @@ import {
 } from "@react-google-maps/api";
 
 import mapStyles from "./mapStyles";
+import "./styles.css";
+
 import { listSpecies } from "../../actions/specie_actions";
 
 const libraries = ["places"];
@@ -19,8 +21,8 @@ const mapContainerStyle = {
   height: "100vh",
 };
 const center = {
-  lat: 32.533,
-  lng: -117.05,
+  lat: 19.617845,
+  lng: -100.137148,
 };
 const options = {
   styles: mapStyles,
@@ -58,6 +60,7 @@ export default function MapScreen({ history }) {
         mapContainerStyle={mapContainerStyle}
         zoom={8}
         center={center}
+        zoom ={5}
         onClick={(event) => {
           setMarkers((current) => [
             ...current,
@@ -78,7 +81,7 @@ export default function MapScreen({ history }) {
             }}
             icon={{
               url: `https://res.cloudinary.com/jordiespinoza/${specie.logo}`,
-              scaledSize: new window.google.maps.Size(60, 60),
+              scaledSize: new window.google.maps.Size(40, 40),
               origin: new window.google.maps.Point(0, 0),
               anchor: new window.google.maps.Point(15, 15),
             }}
@@ -89,6 +92,8 @@ export default function MapScreen({ history }) {
                 name: specie.name,
                 id: specie.id,
                 description: specie.description,
+                img: specie.img,
+                risk: specie.risk,
               })
             }
           />
@@ -101,6 +106,14 @@ export default function MapScreen({ history }) {
             <div>
               <h5>{selected.name}</h5>
               <p>{selected.description}</p>
+              <div className="excerpt d-flex p-3 justify-content-center flex-column">
+                <Image
+                  height="100px"
+                  width="150px"
+                  src={`https://res.cloudinary.com/jordiespinoza/${selected.img}`}
+                />
+                <strong>Riesgo {selected.risk}</strong>
+              </div>
               <LinkContainer to={`species/${selected.id}/`}>
                 <Button variant="primary">Ver mas</Button>
               </LinkContainer>
