@@ -7,15 +7,16 @@ import {
   Button,
 } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import "./styles.css"
 export default function NavigationBar() {
   return (
     <>
       <Navbar
-        style={{backgroundColor:"#000 !important"}}
         fixed="top"
         expand="lg"
         collapseOnSelect
-        className="navbar navbar-expand-lg navbar-dark bg-dark"
+        className="mynav navbar navbar-expand-lg navbar-dark bg-dark"
+        style={{backgroundColor:"#000 !important"}}
       >
         <Navbar.Brand href="/">
           <img

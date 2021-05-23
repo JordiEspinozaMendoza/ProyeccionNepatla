@@ -8,11 +8,13 @@ export default function Footer() {
         <Col className="text-light" md={6}>
           <h4 className="text-light">Sobre el proyecto</h4>
           <span>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting
+            Estamos concientes que el problema que hoy en día estamos afrontando
+            todos es el de mantener viva cualquier especie durante el mismo
+            tiempo que viva la humanidad. Con lo cual, con este proyecto,
+            impulsamos a la población a darse cuenta de aquellas especies que
+            existen dentro de su región y también fuera de ella. El generar
+            conciencia dentro de la sociedad será un gran paso para el siguiente
+            objetivo. Protegerlos y preservarlos es obligacion de todos.
           </span>
         </Col>
         <Col md={6} className="text-light" className="text-light">

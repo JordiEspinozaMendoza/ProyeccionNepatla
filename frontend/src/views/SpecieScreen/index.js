@@ -19,7 +19,7 @@ export default function SpecieScreen({ history, match }) {
     dispatch(details(specieId));
   }, [specieId, history, match]);
   return (
-    <Container style={{ marginTop: "25vh", overflowX: "hidden" }}>
+    <Container style={{ marginTop: "25vh", overflowX: "hidden" }} data-aos={"fade-down"}>
       <Link to="/maps">
         <Button>Regresar al mapa</Button>
       </Link>
@@ -42,32 +42,33 @@ export default function SpecieScreen({ history, match }) {
           <hr />
           <span>Riesgo: {specie?.risk}</span>
           <p>{specie?.description}</p>
-          <h5>Habitat</h5>
-          <p>{specie?.habitat}</p>
-          <hr />
-          <h5>Reino</h5>
-          <p>{specie?.kingdom}</p>
-          <hr />
-          <h5>Familia</h5>
-          <p>{specie?.family}</p>
-          <hr />
-          <h5>Ecosistema</h5>
-          <p>{specie?.ecosistem}</p>
-          <h5>Información actual</h5>
-          <p>{specie?.info_actual}</p>
-          <h5>Concientización</h5>
-          <p>${specie?.awareness}</p>
         </Col>
       </Row>
-
+      <Container>
+        <h5>Habitat</h5>
+        <p>{specie?.habitat}</p>
+        <hr />
+        <h5>Reino</h5>
+        <p>{specie?.kingdom}</p>
+        <hr />
+        <h5>Familia</h5>
+        <p>{specie?.family}</p>
+        <hr />
+        <h5>Ecosistema</h5>
+        <p>{specie?.ecosistem}</p>
+        <hr />
+        <h5>Información actual</h5>
+        <p>{specie?.info_actual}</p>
+        <hr />
+        <h5>Concientización</h5>
+        <p>${specie?.awareness}</p>
+      </Container>
       {specie?.ong && specie?.ong != "NA" && (
         <Container
           className="d-flex flex-column align-items-center mt-5"
           style={{ height: "60vh" }}
         >
-          <h5>
-            ¿Deseas ayudar al cuidado de esta especie?
-          </h5>
+          <h5>¿Deseas ayudar al cuidado de esta especie?</h5>
           <h5>
             Realiza una donacion para ayudar a la presevacion de esta especie
           </h5>

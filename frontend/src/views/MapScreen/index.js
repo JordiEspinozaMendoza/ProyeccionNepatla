@@ -49,18 +49,23 @@ export default function MapScreen({ history }) {
   if (loadError) return "Error al cargar el mapa";
   if (!isLoaded) return "Cargando mapa";
   return (
-    <div style={{ marginTop: "7vh", overflowX: "hidden", textAlign: "center" }}>
-      <h5>
-        Explora y conoce sobre las especies que se encuentran en peligro de
-        extincion
-      </h5>
+    <div
+      style={{ marginTop: "20vh", overflowX: "hidden", textAlign: "center" }}
+    >
+      <div className="mb-5">
+        <h1>Proyección Nepatla - Mapa interactivo</h1>
+        <h5>
+          Explora y conoce sobre las especies que se encuentran en peligro de
+          extincion
+        </h5>
+      </div>
 
       <GoogleMap
         options={options}
         mapContainerStyle={mapContainerStyle}
         zoom={8}
         center={center}
-        zoom ={5}
+        zoom={5}
         onClick={(event) => {
           setMarkers((current) => [
             ...current,
@@ -85,17 +90,21 @@ export default function MapScreen({ history }) {
               origin: new window.google.maps.Point(0, 0),
               anchor: new window.google.maps.Point(15, 15),
             }}
-            onClick={() =>
-              setSelected({
-                latitude: parseFloat(specie.latitude),
-                altitude: parseFloat(specie.altitude),
-                name: specie.name,
-                id: specie.id,
-                description: specie.description,
-                img: specie.img,
-                risk: specie.risk,
-              })
-            }
+            onClick={() => {
+              if (selected?.id == specie.id) {
+                setSelected(null);
+              } else {
+                setSelected({
+                  latitude: parseFloat(specie.latitude),
+                  altitude: parseFloat(specie.altitude),
+                  name: specie.name,
+                  id: specie.id,
+                  description: specie.description,
+                  img: specie.img,
+                  risk: specie.risk,
+                });
+              }
+            }}
           />
         ))}
         {selected ? (
@@ -111,6 +120,7 @@ export default function MapScreen({ history }) {
                   height="100px"
                   width="150px"
                   src={`https://res.cloudinary.com/jordiespinoza/${selected.img}`}
+                  style={{ margin: "0 auto" }}
                 />
                 <strong>Riesgo {selected.risk}</strong>
               </div>

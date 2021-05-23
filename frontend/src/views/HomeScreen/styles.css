@@ -2,3 +2,15 @@
   display: block;
   width: 100%;
 }
+.map-info{
+  min-height: 550px;
+  
+}
+.map-info span{
+  font-size: 19px;
+}
+@media(max-width:1000px){
+  .map-info{
+    min-height: 100px;
+  }
+}
