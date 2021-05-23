@@ -7,7 +7,7 @@ import {
   Button,
 } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import "./styles.css"
+import "./styles.css";
 export default function NavigationBar() {
   return (
     <>
@@ -16,7 +16,7 @@ export default function NavigationBar() {
         expand="lg"
         collapseOnSelect
         className="mynav navbar navbar-expand-lg navbar-dark bg-dark"
-        style={{backgroundColor:"#000 !important"}}
+        style={{ backgroundColor: "#000 !important" }}
       >
         <Navbar.Brand href="/">
           <img
@@ -34,12 +34,12 @@ export default function NavigationBar() {
                 <i className="fas fa-home"></i> Inicio
               </Nav.Link>
             </LinkContainer>
-            
+
             <LinkContainer to="/maps">
-              <Nav.Link>
-                {" "}
-                <i className="fas fa-store"></i> Mapa
-              </Nav.Link>
+              <Nav.Link>Mapa</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/blog">
+              <Nav.Link>Blog</Nav.Link>
             </LinkContainer>
           </Nav>
         </Navbar.Collapse>
