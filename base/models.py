@@ -1,5 +1,5 @@
 from django.db import models
-
+from cloudinary.models import CloudinaryField
 # Create your models here.
 class Species(models.Model):
     name = models.CharField(max_length=200, null=True, blank=True)
@@ -16,5 +16,8 @@ class Species(models.Model):
     latitude = models.DecimalField(max_digits=1000, decimal_places=16, verbose_name="Latitud")
     altitude = models.DecimalField(max_digits=1000, decimal_places=16, verbose_name="Altitud")
     
+    img = CloudinaryField('image', default='')
+    logo = CloudinaryField('image', default='')
+
     def __str__(self):
         return self.name

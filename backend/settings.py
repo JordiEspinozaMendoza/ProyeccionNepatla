@@ -168,5 +168,16 @@ STATIC_URL = '/static/'
 CORS_ALLOW_ALL_ORIGINS = True
 
 
+cloudinary.config(
+  cloud_name = "jordiespinoza",
+  api_key = "742441269294759",
+  api_secret = "4V-aSjAYC_Ve3LNbF8Q0rt1eowg",
+  secure = True
+)
 if os.getcwd() == '/app':
+    import dj_database_url
+    db_from_env = dj_database_url.config(conn_max_age=500)
+    DATABASES['default'].update(db_from_env)
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SECURE_SSL_REDIRECT = True
     DEBUG = False

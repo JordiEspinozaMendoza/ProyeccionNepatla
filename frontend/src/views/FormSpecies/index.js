@@ -3,11 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Button, Form, Image } from "react-bootstrap";
 import FormContainer from "../../components/FormContainer";
-import { specieDetails as details, updateSpecie } from "../../actions/specie_actions";
+import {
+  specieDetails as details,
+  updateSpecie,
+} from "../../actions/specie_actions";
 import {
   SPECIE_DETAILS_RESET,
   SPECIE_UPDATE_RESET,
 } from "../../constants/species_constants";
+
+import axios from "axios";
 
 export default function EditSpecieScreen({ match, history }) {
   const specieId = match.params.id;
@@ -25,6 +30,10 @@ export default function EditSpecieScreen({ match, history }) {
   const [altitude, setAltitude] = useState();
   const [ong, setOng] = useState();
   const dispatch = useDispatch();
+
+  const [image, setImage] = useState("");
+  const [logo, setLogo] = useState("");
+
   const specieDetails = useSelector((state) => state.specieDetails);
   const {
     error: errorDetails,
@@ -40,15 +49,15 @@ export default function EditSpecieScreen({ match, history }) {
     success: successUpdate,
   } = specieUpdate;
 
-  useEffect(()=>{
-    if(successUpdate){
-      dispatch({type:SPECIE_UPDATE_RESET})
-      dispatch({type:SPECIE_DETAILS_RESET})
+  useEffect(() => {
+    if (successUpdate) {
+      dispatch({ type: SPECIE_UPDATE_RESET });
+      dispatch({ type: SPECIE_DETAILS_RESET });
       history.push("/especies/");
-    }else{
-      if(!specie?.name || specie.id !==Number(specieId)){
-        dispatch(details(specieId))
-      }else{
+    } else {
+      if (!specie?.name || specie.id !== Number(specieId)) {
+        dispatch(details(specieId));
+      } else {
         setName(specie.name);
         setDescription(specie.description);
         setRisk(specie.risk);
@@ -62,30 +71,85 @@ export default function EditSpecieScreen({ match, history }) {
         setLatitude(specie.latitude);
         setAltitude(specie.altitude);
         setOng(specie.ong);
+        setLogo(specie.logo)
+        setImage(specie.img)
       }
     }
-  },[specie, specieId,successUpdate, history, dispatch])
-  const submitHandler = (e)=>{
+  }, [specie, specieId, successUpdate, history, dispatch]);
+  const submitHandler = (e) => {
     e.preventDefault();
     dispatch(
       updateSpecie({
-        name:name,
-        id:specieId,
-        description:description,
-        risk:risk,
-        habitat:habitat,
-        kingdom:kingdom,
-        family:family,
-        ecocistem:ecocistem,
-        info_actual:info_actual,
-        movement:movement,
-        awareness:awareness,
-        latitude:latitude,
-        altitude:altitude,
-        ong:ong
+        name: name,
+        id: specieId,
+        description: description,
+        risk: risk,
+        habitat: habitat,
+        kingdom: kingdom,
+        family: family,
+        ecocistem: ecocistem,
+        info_actual: info_actual,
+        movement: movement,
+        awareness: awareness,
+        latitude: latitude,
+        altitude: altitude,
+        ong: ong,
       })
-    )
-  }
+    );
+  };
+  const uploadLogoHandler = () => async (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+
+    formData.append("image", file);
+    formData.append("id", specieId);
+    // setIsUploading(true);
+
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const { data } = await axios.post(
+        "/api/species/uploadlogo/",
+        formData,
+        config
+      );
+      setLogo(data);
+      // setIsUploading(false);
+    } catch (error) {
+      console.log(error);
+      // setIsUploading(false);
+    }
+  };
+  const uploadFileHandler = () => async (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+
+    formData.append("image", file);
+    formData.append("id", specieId);
+    // setIsUploading(true);
+
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const { data } = await axios.post(
+        "/api/species/uploadimage/",
+        formData,
+        config
+      );
+      setLogo(data);
+      // setIsUploading(false);
+    } catch (error) {
+      console.log(error);
+      // setIsUploading(false);
+    }
+  };
+  
   return (
     <div style={{ marginTop: "10vh" }}>
       <>
@@ -222,8 +286,63 @@ export default function EditSpecieScreen({ match, history }) {
                 required
               ></Form.Control>
             </Form.Group>
+            <Form.Group controlId="image">
+              <Form.Label>Imagen</Form.Label>
+              <div className="d-flex align-items-center w-100 justify-content-center">
+              {specie?.img && (
+                  <Image
+                    className="d-block my-4 shadow"
+                    style={{ maxWidth: "330px", maxHeight: "250px" }}
+                    xs={6}
+                    md={4}
+                    src={`https://res.cloudinary.com/jordiespinoza/${specie.img}`}
+                  />
+                )}
+              </div>
+              <Form.Control
+                type="text"
+                placeholder="Ingresa la imagen"
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
+                readOnly={true}
+              ></Form.Control>
+              <Form.File
+                id="image-file"
+                label="Elegir un archivo"
+                custom
+                onChange={uploadFileHandler()}
+              ></Form.File>
+            </Form.Group>
+            <Form.Group controlId="image2">
+              <Form.Label>Logo</Form.Label>
+              <div className="d-flex align-items-center w-100 justify-content-center">
+                {specie?.logo && (
+                  <Image
+                    className="d-block my-4 shadow"
+                    style={{ maxWidth: "330px", maxHeight: "250px" }}
+                    xs={6}
+                    md={4}
+                    src={`https://res.cloudinary.com/jordiespinoza/${specie.logo}`}
+                  />
+                )}
+              </div>
+              <Form.Control
+                type="text"
+                placeholder="Ingresa el logo"
+                value={logo}
+                onChange={(e) => setLogo(e.target.value)}
+                readOnly={true}
+              ></Form.Control>
+              <Form.File
+                id="image-file"
+                label="Elegir un archivo"
+                custom
+                onChange={uploadLogoHandler()}
+              ></Form.File>
+            </Form.Group>
+
             <Button variant="primary" type="submit">
-              Subir
+              Actualizar
             </Button>
           </Form>
         </FormContainer>

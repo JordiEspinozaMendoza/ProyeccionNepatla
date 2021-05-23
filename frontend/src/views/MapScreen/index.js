@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import { Button } from "react-bootstrap";
 import {
   GoogleMap,
   useLoadScript,
@@ -26,20 +27,21 @@ const options = {
   zoomControl: true,
 };
 
-export default function MapScreen({history}) {
+export default function MapScreen({ history }) {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyAP_p_tz9vpl8fw0MHYDo99nc5L3aHaet4",
     libraries,
   });
   const [markers, setMarkers] = useState([]);
+  const [selected, setSelected] = useState(null);
   const dispatch = useDispatch();
-  
+
   const specieList = useSelector((state) => state.specieList);
   const { loading: loadingList, error: errorList, species } = specieList;
 
   useEffect(() => {
     dispatch(listSpecies());
-  },[dispatch, history]);
+  }, [dispatch, history]);
 
   if (loadError) return "Error al cargar el mapa";
   if (!isLoaded) return "Cargando mapa";
@@ -49,7 +51,7 @@ export default function MapScreen({history}) {
         Explora y conoce sobre las especies que se encuentran en peligro de
         extincion
       </h5>
-      
+
       <GoogleMap
         options={options}
         mapContainerStyle={mapContainerStyle}
@@ -69,9 +71,39 @@ export default function MapScreen({history}) {
         {species?.map((specie) => (
           <Marker
             key={specie.id}
-            position={{ lat: parseFloat(specie.latitude), lng: parseFloat(specie.altitude) }}
+            position={{
+              lat: parseFloat(specie.latitude),
+              lng: parseFloat(specie.altitude),
+            }}
+            icon={{
+              url: `https://res.cloudinary.com/jordiespinoza/${specie.img}`,
+              scaledSize: new window.google.maps.Size(60, 60),
+              origin: new window.google.maps.Point(0, 0),
+              anchor: new window.google.maps.Point(15, 15),
+            }}
+            onClick={() =>
+              setSelected({
+                latitude: parseFloat(specie.latitude),
+                altitude: parseFloat(specie.altitude),
+                name: specie.name,
+                id: specie.id,
+                description: specie.description,
+              })
+            }
           />
         ))}
+        {selected ? (
+          <InfoWindow
+            position={{ lat: selected.latitude, lng: selected.altitude }}
+            onCloseClick={() => setSelected(null)}
+          >
+            <div>
+              <h5>{selected.name}</h5>
+              <p>{selected.description}</p>
+              <Button variant="primary">Ver mas</Button>
+            </div>
+          </InfoWindow>
+        ) : null}
       </GoogleMap>
     </div>
   );

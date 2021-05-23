@@ -72,3 +72,33 @@ def updateSpecie(request, pk):
         print(data)
         print("Error details", str(err))
         return Response("Error")
+
+@api_view(['POST'])
+def uploadImage(request):
+    try:
+        data = request.data
+        id = data['id']
+        specie = Species.objects.get(id=id)
+        specie.img = request.FILES.get('image')
+        specie.save()
+
+        return Response('Imagen actualizada correctamente')
+
+    except Exception as e:
+        print('Error details: ' + ' ' + str(e))
+        message = {'detail': 'Something bad happen'}
+        return Response(message, status=status.HTTP_400_BAD_REQUEST)
+ 
+@api_view(['POST'])
+def uploadLogo(request):
+    try:
+        data = request.data
+        id = data['id']
+        specie = Species.objects.get(id=id)
+        specie.logo = request.FILES.get('image')
+        specie.save()
+        return Response('Logo actualizada correctamente')
+    except Exception as e:
+        print('Error details: ' + ' ' + str(e))
+        message = {'detail': 'Something bad happen'}
+        return Response(message, status=status.HTTP_400_BAD_REQUEST)
