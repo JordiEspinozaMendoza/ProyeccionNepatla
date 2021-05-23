@@ -26,7 +26,7 @@ const options = {
   zoomControl: true,
 };
 
-export default function MapComponent() {
+export default function MapComponent({history}) {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyAP_p_tz9vpl8fw0MHYDo99nc5L3aHaet4",
     libraries,
@@ -42,7 +42,8 @@ export default function MapComponent() {
 
   useEffect(() => {
     dispatch(listSpecies());
-  },[]);
+  },[dispatch, history]);
+
   if (loadError) return "Error al cargar el mapa";
   if (!isLoaded) return "Cargando mapa";
   return (
@@ -56,16 +57,16 @@ export default function MapComponent() {
         mapContainerStyle={mapContainerStyle}
         zoom={8}
         center={center}
-        // onClick={(event) => {
-        //   setMarkers((current) => [
-        //     ...current,
-        //     {
-        //       lat: event.latLng.lat(),
-        //       lng: event.latLng.lng(),
-        //       time: new Date(),
-        //     },
-        //   ]);
-        // }}
+        onClick={(event) => {
+          setMarkers((current) => [
+            ...current,
+            {
+              lat: event.latLng.lat(),
+              lng: event.latLng.lng(),
+              time: new Date(),
+            },
+          ]);
+        }}
       >
         {species?.map((specie) => (
           <Marker
