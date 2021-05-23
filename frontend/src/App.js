@@ -7,6 +7,8 @@ import Footer from "./components/Footer";
 import HomeScreen from './views/HomeScreen'
 import ListSpecies from './views/ListSpecies'
 import EditSpecieScreen from './views/FormSpecies'
+import SpecieScreen from './views/SpecieScreen'
+
 import MapScreen from './views/MapScreen'
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
         <Route path="/especies" component={ListSpecies} exact></Route>
         <Route path="/maps" component={MapScreen} exact></Route>
         <Route path="/species/edit/:id/" component={EditSpecieScreen} exact></Route>
+        <Route path="/species/:id/" component={SpecieScreen} exact></Route>
+
       <Footer />
     </Router>
   );

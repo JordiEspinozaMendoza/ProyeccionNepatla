@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Button } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 import {
   GoogleMap,
   useLoadScript,
@@ -100,7 +101,9 @@ export default function MapScreen({ history }) {
             <div>
               <h5>{selected.name}</h5>
               <p>{selected.description}</p>
-              <Button variant="primary">Ver mas</Button>
+              <LinkContainer to={`species/${selected.id}/`}>
+                <Button variant="primary">Ver mas</Button>
+              </LinkContainer>
             </div>
           </InfoWindow>
         ) : null}

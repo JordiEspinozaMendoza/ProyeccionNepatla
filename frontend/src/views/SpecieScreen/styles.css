@@ -1,0 +1,10 @@
+.image-specie {
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  padding: 15px;
+  height: 45vh;
+}
+/*# sourceMappingURL=styles.css.map */

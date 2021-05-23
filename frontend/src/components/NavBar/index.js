@@ -16,8 +16,14 @@ export default function NavigationBar() {
         collapseOnSelect
         className="navbar navbar-expand-lg navbar-dark bg-dark"
       >
-        <Navbar.Brand></Navbar.Brand>
-        <Navbar.Brand>Proyeccion Nepatla</Navbar.Brand>
+        <Navbar.Brand href="/">
+          <img
+            src="https://res.cloudinary.com/jordiespinoza/image/upload/v1621735707/PNbn_lkus8y.png"
+            width="170"
+            height="60"
+            className="d-inline-block align-top"
+          />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="navigationBar" />
         <Navbar.Collapse id="navigationBar">
           <Nav className="ml-auto">
