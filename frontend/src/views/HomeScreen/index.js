@@ -28,20 +28,20 @@ export default function HomeScreen() {
             <Row>
               <Col md={6} className="text-left">
                 <h5>Conoce</h5>
-                <span>
+                <span className="myspan">
                   Descubre en nuestro mapa interactivo la cantidad de especies
                   que se encuentrar en peligro de extinción en México,
                   interactua con ellos para consultar información importante.
                 </span>
                 <Image
-                  src="https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=752&q=80"
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Ocelot_%28Jaguatirica%29_Zoo_Itatiba.jpg/250px-Ocelot_%28Jaguatirica%29_Zoo_Itatiba.jpg"
                   height="350px"
                   className="img mt-4"
                 />
               </Col>
               <Col md={6} className="text-left">
                 <h5>Apoya a salvar a las especies</h5>
-                <span>
+                <span className="myspan">
                   Consulta información sobre como puedes ayudar a la
                   preservación de una especie realizando una donación directa
                   desde nuestra aplicación
@@ -99,7 +99,7 @@ export default function HomeScreen() {
             <span className="p-5 d-block">
               Muchas veces se busca el realizar donaciones para el presevar una
               especie, pero realmente no sabemos que camino tomar, en Proyección
-              Nepatla te vinculamos directamente con alguna ONG que este en la
+              Nepatla te vinculamos directamente con alguna ONG (Organización no gubernamental) que este en la
               misión del cuidado de una especie, podrás realizar tu donativo
               hacia ellos directamente.
             </span>

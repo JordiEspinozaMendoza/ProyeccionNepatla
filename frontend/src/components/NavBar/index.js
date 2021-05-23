@@ -34,13 +34,7 @@ export default function NavigationBar() {
                 <i className="fas fa-home"></i> Inicio
               </Nav.Link>
             </LinkContainer>
-
-            <LinkContainer to="/especies">
-              <Nav.Link>
-                {" "}
-                <i className="fas fa-store"></i> Especies
-              </Nav.Link>
-            </LinkContainer>
+            
             <LinkContainer to="/maps">
               <Nav.Link>
                 {" "}

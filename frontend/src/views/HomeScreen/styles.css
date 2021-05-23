@@ -2,15 +2,19 @@
   display: block;
   width: 100%;
 }
-.map-info{
+.map-info {
   min-height: 550px;
-  
 }
-.map-info span{
+.myspan {
+  display: block;
+  min-height: 125px;
+}
+.map-info span {
   font-size: 19px;
 }
-@media(max-width:1000px){
-  .map-info{
+@media (max-width: 1000px) {
+  .map-info {
     min-height: 100px;
   }
+
 }
