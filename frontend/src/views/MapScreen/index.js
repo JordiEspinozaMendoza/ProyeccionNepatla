@@ -26,7 +26,7 @@ const options = {
   zoomControl: true,
 };
 
-export default function MapComponent({history}) {
+export default function MapScreen({history}) {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyAP_p_tz9vpl8fw0MHYDo99nc5L3aHaet4",
     libraries,
